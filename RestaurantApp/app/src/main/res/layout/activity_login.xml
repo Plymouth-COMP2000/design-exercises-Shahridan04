@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/login_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_large">
+
+        <!-- App Name / Branding -->
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_xlarge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="1.0" />
+
+        <!-- Login Card Container -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/login_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/radius_xlarge"
+            app:cardElevation="@dimen/card_elevation_pressed"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginTop="@dimen/spacing_xlarge"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.92">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_large">
+
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome Back"
+                    android:textAppearance="@style/TextAppearance.App.Title"
+                    android:textColor="@color/primary"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="1.0" />
+
+                <TextView
+                    android:id="@+id/tv_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sign in to continue"
+                    android:textAppearance="@style/TextAppearance.App.Secondary"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_micro"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="1.0" />
+
+                <!-- Logo Container with Image -->
+                <ImageView
+                    android:id="@+id/logo_image"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:src="@drawable/logo_restaurant"
+                    android:contentDescription="Restaurant Logo"
+                    android:scaleType="centerInside"
+                    app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Username Label -->
+                <TextView
+                    android:id="@+id/tv_username_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textAppearance="@style/TextAppearance.App.Secondary"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    app:layout_constraintTop_toBottomOf="@id/logo_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Username Input -->
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/input_height"
+                    android:hint="Enter username"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:background="@drawable/input_background"
+                    android:inputType="text"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toBottomOf="@id/tv_username_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Password Label -->
+                <TextView
+                    android:id="@+id/tv_password_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password"
+                    android:textAppearance="@style/TextAppearance.App.Secondary"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toBottomOf="@id/et_username"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Password Input -->
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/input_height"
+                    android:hint="Enter password"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:background="@drawable/input_background"
+                    android:inputType="textPassword"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toBottomOf="@id/tv_password_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Radio Group Container -->
+                <RadioGroup
+                    android:id="@+id/radio_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toBottomOf="@id/et_password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/rb_staff"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/staff"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:checked="true"
+                        android:buttonTint="@color/primary" />
+
+                    <RadioButton
+                        android:id="@+id/rb_guest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/guest"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:buttonTint="@color/primary" />
+                </RadioGroup>
+
+                <!-- Login Button -->
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:text="Login"
+                    android:background="@drawable/button_primary"
+                    android:textColor="@color/text_on_primary"
+                    android:textSize="@dimen/text_size_body"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:elevation="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    app:layout_constraintTop_toBottomOf="@id/radio_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Forgot Password -->
+                <TextView
+                    android:id="@+id/tv_forgot_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forgot_password"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textColor="@color/primary"
+                    android:gravity="center"
+                    android:padding="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:layout_constraintTop_toBottomOf="@id/btn_login"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

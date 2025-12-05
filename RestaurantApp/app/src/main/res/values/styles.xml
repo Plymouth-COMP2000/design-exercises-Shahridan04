@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Styles -->
+    <style name="TextAppearance.App.Display" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_display</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="TextAppearance.App.Title" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="TextAppearance.App.Headline" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_headline</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="TextAppearance.App.Body" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.App.Secondary" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_secondary</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Button Styles -->
+    <style name="Widget.App.Button.Primary" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_primary</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/spacing_large</item>
+        <item name="android:paddingEnd">@dimen/spacing_large</item>
+    </style>
+    
+    <style name="Widget.App.Button.Accent" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_accent</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/spacing_large</item>
+        <item name="android:paddingEnd">@dimen/spacing_large</item>
+    </style>
+    
+    <style name="Widget.App.Button.Error" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_error</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/spacing_large</item>
+        <item name="android:paddingEnd">@dimen/spacing_large</item>
+    </style>
+    
+    <!-- Card Style -->
+    <style name="Widget.App.CardView" parent="CardView">
+        <item name="cardCornerRadius">@dimen/radius_large</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="contentPadding">@dimen/spacing_medium</item>
+    </style>
+</resources>
+

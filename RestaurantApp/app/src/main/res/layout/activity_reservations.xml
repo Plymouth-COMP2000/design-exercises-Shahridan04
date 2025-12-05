@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/content_background_pattern">
+
+    <!-- Header -->
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@drawable/header_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_back"
+        android:layout_width="99dp"
+        android:layout_height="52dp"
+        android:background="@android:color/transparent"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/spacing_medium"
+        android:text="← Back"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:textColor="@color/text_on_primary"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_background" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/reservations"
+        android:textAppearance="@style/TextAppearance.App.Headline"
+        android:textColor="@color/text_on_primary"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintEnd_toStartOf="@id/spacer_right" />
+
+    <!-- Spacer to balance the header -->
+    <View
+        android:id="@+id/spacer_right"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Date Selector -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/date_selector"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/input_height"
+        android:background="@drawable/input_background_visible"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:layout_margin="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.95">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/today_date"
+            android:textAppearance="@style/TextAppearance.App.Body"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_date_icon" />
+
+        <TextView
+            android:id="@+id/tv_date_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📅"
+            android:textSize="@dimen/text_size_body"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="@string/search_by_name"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:background="@drawable/input_background_visible"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:inputType="text"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/date_selector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <!-- Today's Reservations Title -->
+    <TextView
+        android:id="@+id/tv_reservations_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Today's Reservations (8)"
+        android:textAppearance="@style/TextAppearance.App.Headline"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <!-- Reservations List -->
+    <ScrollView
+        android:id="@+id/scroll_reservations"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
+        app:layout_constraintTop_toBottomOf="@id/tv_reservations_title"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingEnd="@dimen/spacing_medium">
+
+            <!-- Reservation 1: Sarah Lee -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_reservation_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_res_1_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sarah Lee"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_res_1_time" />
+
+                    <TextView
+                        android:id="@+id/tv_res_1_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7:30 PM"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_res_1_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Party of 4 • Table 12"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_1_name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_view_1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height_small"
+                        android:text="@string/view_details"
+                        android:background="@drawable/button_accent"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginEnd="@dimen/spacing_tiny"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_1_details"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btn_cancel_1"
+                        app:layout_constraintWidth_percent="0.48" />
+
+                    <Button
+                        android:id="@+id/btn_cancel_1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height_small"
+                        android:text="@string/cancel_booking"
+                        android:background="@drawable/button_error"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_1_details"
+                        app:layout_constraintStart_toEndOf="@id/btn_view_1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintWidth_percent="0.48" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Reservation 2: Ahmad Rahman -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_reservation_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/card_reservation_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_res_2_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ahmad Rahman"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_res_2_time" />
+
+                    <TextView
+                        android:id="@+id/tv_res_2_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8:00 PM"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_res_2_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Party of 2 • Table 5"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_2_name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_view_2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height_small"
+                        android:text="@string/view_details"
+                        android:background="@drawable/button_accent"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginEnd="@dimen/spacing_tiny"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_2_details"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btn_cancel_2"
+                        app:layout_constraintWidth_percent="0.48" />
+
+                    <Button
+                        android:id="@+id/btn_cancel_2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height_small"
+                        android:text="@string/cancel_booking"
+                        android:background="@drawable/button_error"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_2_details"
+                        app:layout_constraintStart_toEndOf="@id/btn_view_2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintWidth_percent="0.48" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Reservation 3: Jessica Wong -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_reservation_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/card_reservation_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_res_3_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Jessica Wong"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_res_3_time" />
+
+                    <TextView
+                        android:id="@+id/tv_res_3_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8:30 PM"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_res_3_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Party of 6 • Table 20"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_3_name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_view_3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height_small"
+                        android:text="@string/view_details"
+                        android:background="@drawable/button_accent"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginEnd="@dimen/spacing_tiny"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_3_details"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btn_cancel_3"
+                        app:layout_constraintWidth_percent="0.48" />
+
+                    <Button
+                        android:id="@+id/btn_cancel_3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height_small"
+                        android:text="@string/cancel_booking"
+                        android:background="@drawable/button_error"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@id/tv_res_3_details"
+                        app:layout_constraintStart_toEndOf="@id/btn_view_3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintWidth_percent="0.48" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@drawable/bottom_nav_background"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/home"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nav_menu"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_menu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/menu"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_home"
+            app:layout_constraintEnd_toStartOf="@id/nav_bookings"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_bookings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="@string/bookings"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:background="@drawable/nav_item_selected"
+            android:layout_margin="@dimen/spacing_tiny"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_menu"
+            app:layout_constraintEnd_toStartOf="@id/nav_settings"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_settings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/settings"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_bookings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
