@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.cardview)
+    implementation(libs.recyclerview)
     
     // Room Database
     implementation(libs.room.runtime)

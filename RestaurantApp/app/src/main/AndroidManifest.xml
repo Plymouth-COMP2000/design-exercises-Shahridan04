@@ -27,6 +27,33 @@
         <activity
             android:name=".activity.AddItemActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.MenuListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StaffDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GuestHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GuestMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ItemDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ReservationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MyReservationsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -326,7 +326,7 @@
                 android:id="@+id/btn_continue"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/button_height"
-                android:text="@string/continue"
+                android:text="@string/btn_continue"
                 android:background="@drawable/button_primary"
                 android:textColor="@color/text_on_primary"
                 android:textSize="@dimen/text_size_body"

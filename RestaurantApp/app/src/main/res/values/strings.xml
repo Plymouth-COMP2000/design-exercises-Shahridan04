@@ -9,6 +9,9 @@
     <string name="guest">Guest</string>
     <string name="login_button">Login Button</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
     
     <!-- Staff Dashboard -->
     <string name="staff_dashboard">Staff Dashboard</string>
@@ -22,7 +25,7 @@
     <string name="menu_list">Menu List</string>
     <string name="back">Back</string>
     <string name="add_new_item">Add New Item</string>
-    <string name="search_hint">Search...</string>
+    <string name="search_hint">Search…</string>
     <string name="all">All</string>
     <string name="starters">Starters</string>
     <string name="mains">Mains</string>
@@ -44,7 +47,7 @@
     <!-- Reservations -->
     <string name="reservations">Reservations</string>
     <string name="today_date">Today - Nov 7, 2025</string>
-    <string name="search_by_name">Search by name...</string>
+    <string name="search_by_name">Search by name…</string>
     <string name="todays_reservations">Today\'s Reservations (%d)</string>
     <string name="view_details">View Details</string>
     <string name="cancel_booking">Cancel</string>
@@ -68,7 +71,7 @@
     <string name="account_info">Account Info</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
-    <string name="contact">Contact</string>
+    <string name="contact_number">Contact</string>
     <string name="notifications">Notifications</string>
     <string name="reservation_updates">Reservation Updates</string>
     <string name="menu_updates">Menu Updates</string>
@@ -104,7 +107,7 @@
     <string name="date_selected">Date Selected</string>
     <string name="select_time">Select Time</string>
     <string name="number_of_guests">Number of guests</string>
-    <string name="continue">CONTINUE</string>
+    <string name="btn_continue">CONTINUE</string>
     <string name="step_2_of_3">Step 2 of 3: Select Time &amp; Party</string>
     
     <!-- Confirm Booking -->

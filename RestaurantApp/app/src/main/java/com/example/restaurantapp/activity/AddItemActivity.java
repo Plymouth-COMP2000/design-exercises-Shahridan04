@@ -30,6 +30,8 @@ public class AddItemActivity extends AppCompatActivity {
     
     private String selectedCategory = "";
     private static final String[] CATEGORIES = {"Starters", "Mains", "Desserts", "Drinks"};
+    private boolean isEditMode = false;
+    private int editingItemId = -1;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,41 @@ public class AddItemActivity extends AppCompatActivity {
         database = AppDatabase.getInstance(this);
         executorService = Executors.newSingleThreadExecutor();
         
+        // Check if editing
+        isEditMode = getIntent().getBooleanExtra("EDIT_ITEM", false);
+        if (isEditMode) {
+            editingItemId = getIntent().getIntExtra("ITEM_ID", -1);
+        }
+        
         // Initialize views
         initializeViews();
         
         // Set up click listeners
         setupClickListeners();
+        
+        // Load data if editing
+        if (isEditMode) {
+            loadItemData();
+        }
+    }
+    
+    private void loadItemData() {
+        // Pre-fill fields from intent
+        etItemName.setText(getIntent().getStringExtra("ITEM_NAME"));
+        etPrice.setText(String.valueOf(getIntent().getDoubleExtra("ITEM_PRICE", 0.0)));
+        etDescription.setText(getIntent().getStringExtra("ITEM_DESCRIPTION"));
+        selectedCategory = getIntent().getStringExtra("ITEM_CATEGORY");
+        if (selectedCategory != null && !selectedCategory.isEmpty()) {
+            tvCategory.setText(selectedCategory);
+            tvCategory.setTextColor(ContextCompat.getColor(this, R.color.text_primary));
+        }
+        
+        // Update title and button text
+        TextView tvTitle = findViewById(R.id.tv_title);
+        if (tvTitle != null) {
+            tvTitle.setText("Edit Item");
+        }
+        btnSaveItem.setText("Update Item");
     }
     
     private void initializeViews() {
@@ -122,29 +154,40 @@ public class AddItemActivity extends AppCompatActivity {
             return;
         }
         
-        // Create MenuItem object
-        MenuItem menuItem = new MenuItem(
-            name,
-            price,
-            description.isEmpty() ? "" : description,
-            "", // imagePath - can be implemented later
-            selectedCategory
-        );
-        
-        // Insert into database on background thread
+        // Insert or Update into database on background thread
         executorService.execute(() -> {
             try {
-                database.menuDao().insertMenuItem(menuItem);
-                
-                // Show toast on main thread
-                runOnUiThread(() -> {
-                    Toast.makeText(AddItemActivity.this, "Item Added", Toast.LENGTH_SHORT).show();
-                    finish();
-                });
+                if (isEditMode && editingItemId != -1) {
+                    // Update existing item
+                    database.menuDao().updateMenuItem(editingItemId, name, price, 
+                                                     description.isEmpty() ? "" : description, 
+                                                     selectedCategory);
+                    
+                    runOnUiThread(() -> {
+                        Toast.makeText(AddItemActivity.this, "Item Updated", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                } else {
+                    // Create new item
+                    MenuItem menuItem = new MenuItem(
+                        name,
+                        price,
+                        description.isEmpty() ? "" : description,
+                        "", // imagePath - can be implemented later
+                        selectedCategory
+                    );
+                    
+                    database.menuDao().insertMenuItem(menuItem);
+                    
+                    runOnUiThread(() -> {
+                        Toast.makeText(AddItemActivity.this, "Item Added", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                }
             } catch (Exception e) {
-                // Handle error on main thread
                 runOnUiThread(() -> {
-                    Toast.makeText(AddItemActivity.this, "Error adding item: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    String message = isEditMode ? "Error updating item: " : "Error adding item: ";
+                    Toast.makeText(AddItemActivity.this, message + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
             }
         });
