@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/content_background_pattern">
+
+    <!-- Header -->
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@drawable/header_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_back"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="← Back"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:textColor="@color/text_on_primary"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/spacing_medium"
+        android:gravity="start|center_vertical"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/item_details"
+        android:textAppearance="@style/TextAppearance.App.Headline"
+        android:textColor="@color/text_on_primary"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintEnd_toStartOf="@id/spacer_right" />
+
+    <View
+        android:id="@+id/spacer_right"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium">
+
+            <!-- Large Image Placeholder -->
+            <FrameLayout
+                android:id="@+id/image_container"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:background="@drawable/image_placeholder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🐟"
+                    android:textSize="80sp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <!-- Item Name -->
+            <TextView
+                android:id="@+id/tv_item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Grilled Salmon"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@id/image_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="RM 45.00"
+                android:textAppearance="@style/TextAppearance.App.Headline"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <!-- Description Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/tv_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_desc_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:textAppearance="@style/TextAppearance.App.Caption"
+                        android:textColor="@color/text_secondary"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_desc_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Fresh Atlantic salmon grilled to perfection, served with roasted vegetables and lemon herb butter. Rich in omega-3 fatty acids."
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        app:layout_constraintTop_toBottomOf="@id/tv_desc_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Dietary Information Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_dietary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@id/card_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_dietary_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dietary_information"
+                        android:textAppearance="@style/TextAppearance.App.Caption"
+                        android:textColor="@color/text_secondary"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/dietary_tags"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@id/tv_dietary_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/contains_fish"
+                            android:textAppearance="@style/TextAppearance.App.Secondary"
+                            android:background="@drawable/button_accent"
+                            android:textColor="@color/text_on_primary"
+                            android:paddingStart="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_small"
+                            android:paddingTop="@dimen/spacing_micro"
+                            android:paddingBottom="@dimen/spacing_micro"
+                            android:layout_marginEnd="@dimen/spacing_tiny" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gluten_free"
+                            android:textAppearance="@style/TextAppearance.App.Secondary"
+                            android:background="@drawable/button_accent"
+                            android:textColor="@color/text_on_primary"
+                            android:paddingStart="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_small"
+                            android:paddingTop="@dimen/spacing_micro"
+                            android:paddingBottom="@dimen/spacing_micro"
+                            android:layout_marginEnd="@dimen/spacing_tiny" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/low_carb"
+                            android:textAppearance="@style/TextAppearance.App.Secondary"
+                            android:background="@drawable/button_accent"
+                            android:textColor="@color/text_on_primary"
+                            android:paddingStart="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_small"
+                            android:paddingTop="@dimen/spacing_micro"
+                            android:paddingBottom="@dimen/spacing_micro" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Make Reservation Button -->
+            <Button
+                android:id="@+id/btn_make_reservation"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/make_reservation"
+                android:background="@drawable/button_accent"
+                android:textColor="@color/text_on_primary"
+                android:textSize="@dimen/text_size_body"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="true"
+                android:elevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_xlarge"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@id/card_dietary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

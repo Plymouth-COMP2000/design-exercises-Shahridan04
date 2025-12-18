@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/content_background_pattern">
+
+    <!-- Header -->
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@drawable/header_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/our_menu"
+        android:textAppearance="@style/TextAppearance.App.Headline"
+        android:textColor="@color/text_on_primary"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/spacing_medium"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_search" />
+
+    <TextView
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🔍"
+        android:textSize="24sp"
+        android:textColor="@color/text_on_primary"
+        android:padding="@dimen/spacing_medium"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Browse by Category -->
+    <TextView
+        android:id="@+id/tv_browse_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/browse_by_category"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <!-- Category Filters -->
+    <HorizontalScrollView
+        android:id="@+id/category_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
+        app:layout_constraintTop_toBottomOf="@id/tv_browse_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_filter_all"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_small"
+                android:text="@string/all"
+                android:background="@drawable/button_accent"
+                android:textColor="@color/text_on_primary"
+                android:textSize="@dimen/text_size_secondary"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="false"
+                android:minWidth="80dp"
+                android:layout_marginEnd="@dimen/spacing_tiny" />
+
+            <Button
+                android:id="@+id/btn_filter_starters"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_small"
+                android:text="@string/starters"
+                android:background="@drawable/input_background"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_secondary"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="false"
+                android:minWidth="80dp"
+                android:layout_marginEnd="@dimen/spacing_tiny" />
+
+            <Button
+                android:id="@+id/btn_filter_mains"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_small"
+                android:text="@string/mains"
+                android:background="@drawable/input_background"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_secondary"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="false"
+                android:minWidth="80dp"
+                android:layout_marginEnd="@dimen/spacing_tiny" />
+
+            <Button
+                android:id="@+id/btn_filter_drinks"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_small"
+                android:text="@string/drinks"
+                android:background="@drawable/input_background"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_secondary"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="false"
+                android:minWidth="80dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Menu Items List -->
+    <ScrollView
+        android:id="@+id/menu_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/category_scroll"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingEnd="@dimen/spacing_medium">
+
+            <!-- Caesar Salad -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_salad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_small">
+
+                    <FrameLayout
+                        android:id="@+id/img_salad"
+                        android:layout_width="@dimen/menu_image_size"
+                        android:layout_height="@dimen/menu_image_size"
+                        android:background="@drawable/image_placeholder"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🥗"
+                            android:textSize="32sp"
+                            android:layout_gravity="center" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_salad_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Caesar Salad"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        app:layout_constraintTop_toTopOf="@id/img_salad"
+                        app:layout_constraintStart_toEndOf="@id/img_salad"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_salad_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fresh_romaine"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_salad_name"
+                        app:layout_constraintStart_toEndOf="@id/img_salad"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_salad_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="RM 18.00"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:textColor="@color/primary"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_salad_desc"
+                        app:layout_constraintStart_toEndOf="@id/img_salad"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Margherita Pizza -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pizza"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/card_salad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_small">
+
+                    <FrameLayout
+                        android:id="@+id/img_pizza"
+                        android:layout_width="@dimen/menu_image_size"
+                        android:layout_height="@dimen/menu_image_size"
+                        android:background="@drawable/image_placeholder"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🍕"
+                            android:textSize="32sp"
+                            android:layout_gravity="center" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_pizza_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Margherita Pizza"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        app:layout_constraintTop_toTopOf="@id/img_pizza"
+                        app:layout_constraintStart_toEndOf="@id/img_pizza"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_pizza_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/classic_italian"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_pizza_name"
+                        app:layout_constraintStart_toEndOf="@id/img_pizza"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_pizza_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="RM 32.00"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:textColor="@color/primary"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_pizza_desc"
+                        app:layout_constraintStart_toEndOf="@id/img_pizza"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Grilled Salmon -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_salmon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/card_pizza"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_small">
+
+                    <FrameLayout
+                        android:id="@+id/img_salmon"
+                        android:layout_width="@dimen/menu_image_size"
+                        android:layout_height="@dimen/menu_image_size"
+                        android:background="@drawable/image_placeholder"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🐟"
+                            android:textSize="32sp"
+                            android:layout_gravity="center" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_salmon_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Grilled Salmon"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        app:layout_constraintTop_toTopOf="@id/img_salmon"
+                        app:layout_constraintStart_toEndOf="@id/img_salmon"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_salmon_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fresh_atlantic"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_salmon_name"
+                        app:layout_constraintStart_toEndOf="@id/img_salmon"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_salmon_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="RM 45.00"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:textColor="@color/primary"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_salmon_desc"
+                        app:layout_constraintStart_toEndOf="@id/img_salmon"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@drawable/bottom_nav_background"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/home"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nav_menu"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_menu"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="@string/menu"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:background="@drawable/nav_item_selected"
+            android:layout_margin="@dimen/spacing_tiny"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_home"
+            app:layout_constraintEnd_toStartOf="@id/nav_bookings"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_bookings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/bookings"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_menu"
+            app:layout_constraintEnd_toStartOf="@id/nav_profile"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Profile"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_bookings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

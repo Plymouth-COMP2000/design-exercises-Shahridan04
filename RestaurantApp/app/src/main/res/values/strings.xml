@@ -74,4 +74,56 @@
     <string name="menu_updates">Menu Updates</string>
     <string name="change_password">Change Password</string>
     <string name="logout">Logout</string>
+    
+    <!-- Guest Home -->
+    <string name="welcome">Welcome, %s!</string>
+    <string name="ready_to_dine">Ready to Dine?</string>
+    <string name="make_reservation">MAKE RESERVATION</string>
+    <string name="upcoming_reservations">Upcoming Reservations</string>
+    <string name="featured_dishes">Featured Dishes</string>
+    <string name="view_full_menu">VIEW FULL MENU</string>
+    <string name="party_of">Party of %d</string>
+    
+    <!-- Guest Menu -->
+    <string name="our_menu">Our Menu</string>
+    <string name="browse_by_category">Browse by Category:</string>
+    <string name="drinks">Drinks</string>
+    <string name="fresh_romaine">Fresh romaine lettuce with parmesan</string>
+    <string name="classic_italian">Classic Italian pizza with fresh basil</string>
+    <string name="fresh_atlantic">Fresh Atlantic salmon with herbs</string>
+    
+    <!-- Item Details -->
+    <string name="item_details">Item Details</string>
+    <string name="dietary_information">Dietary Information</string>
+    <string name="contains_fish">Contains Fish</string>
+    <string name="gluten_free">Gluten Free</string>
+    <string name="low_carb">Low Carb</string>
+    
+    <!-- Book a Table -->
+    <string name="book_a_table">Book a Table</string>
+    <string name="date_selected">Date Selected</string>
+    <string name="select_time">Select Time</string>
+    <string name="number_of_guests">Number of guests</string>
+    <string name="continue">CONTINUE</string>
+    <string name="step_2_of_3">Step 2 of 3: Select Time &amp; Party</string>
+    
+    <!-- Confirm Booking -->
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="booking_confirmed">Booking Confirmed!</string>
+    <string name="reservation_saved">Your reservation has been saved</string>
+    <string name="reservation_summary">Reservation Summary</string>
+    <string name="view_my_reservations">VIEW MY RESERVATIONS</string>
+    <string name="back_to_home">BACK TO HOME</string>
+    <string name="step_3_of_3">Step 3 of 3: Confirm</string>
+    
+    <!-- My Reservations -->
+    <string name="my_reservations">My Reservations</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
+    <string name="confirmed">CONFIRMED</string>
+    <string name="pending">PENDING</string>
+    <string name="tap_for_details">Tap for details →</string>
+    <string name="no_more_upcoming">No more upcoming reservations</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="next_week">Next Week</string>
 </resources>

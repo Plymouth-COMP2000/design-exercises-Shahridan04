@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/content_background_pattern">
+
+    <!-- Header -->
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@drawable/header_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_back"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="← Back"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:textColor="@color/text_on_primary"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/spacing_medium"
+        android:gravity="start|center_vertical"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/book_a_table"
+        android:textAppearance="@style/TextAppearance.App.Headline"
+        android:textColor="@color/text_on_primary"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintEnd_toStartOf="@id/spacer_right" />
+
+    <View
+        android:id="@+id/spacer_right"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/header_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium">
+
+            <!-- Progress Indicator -->
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/step_2_of_3"
+                android:textAppearance="@style/TextAppearance.App.Secondary"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <!-- Date Selected Card -->
+            <TextView
+                android:id="@+id/tv_date_selected_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/date_selected"
+                android:textAppearance="@style/TextAppearance.App.Secondary"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/tv_progress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_date_selected"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/accent_light"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                app:layout_constraintTop_toBottomOf="@id/tv_date_selected_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_date_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nov 10, 2025"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_check" />
+
+                    <TextView
+                        android:id="@+id/tv_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✓"
+                        android:textSize="24sp"
+                        android:textColor="@color/accent"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Select Time Section -->
+            <TextView
+                android:id="@+id/tv_select_time_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/select_time"
+                android:textAppearance="@style/TextAppearance.App.Secondary"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/card_date_selected"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/time_grid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_select_time_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <Button
+                    android:id="@+id/btn_time_5pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:text="5:00 PM"
+                    android:background="@drawable/input_background"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_time_530pm"
+                    app:layout_constraintWidth_percent="0.32" />
+
+                <Button
+                    android:id="@+id/btn_time_530pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:text="5:30 PM"
+                    android:background="@drawable/input_background"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_time_5pm"
+                    app:layout_constraintEnd_toStartOf="@id/btn_time_6pm"
+                    app:layout_constraintWidth_percent="0.32" />
+
+                <Button
+                    android:id="@+id/btn_time_6pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:text="6:00 PM"
+                    android:background="@drawable/input_background"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_time_530pm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.32" />
+
+                <Button
+                    android:id="@+id/btn_time_630pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:text="6:30 PM"
+                    android:background="@drawable/button_accent"
+                    android:textColor="@color/text_on_primary"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toBottomOf="@id/btn_time_5pm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_time_7pm"
+                    app:layout_constraintWidth_percent="0.32" />
+
+                <Button
+                    android:id="@+id/btn_time_7pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:text="7:00 PM"
+                    android:background="@drawable/input_background"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toBottomOf="@id/btn_time_530pm"
+                    app:layout_constraintStart_toEndOf="@id/btn_time_630pm"
+                    app:layout_constraintEnd_toStartOf="@id/btn_time_730pm"
+                    app:layout_constraintWidth_percent="0.32" />
+
+                <Button
+                    android:id="@+id/btn_time_730pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:text="7:30 PM"
+                    android:background="@drawable/input_background"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toBottomOf="@id/btn_time_6pm"
+                    app:layout_constraintStart_toEndOf="@id/btn_time_7pm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.32" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Party Size Section -->
+            <TextView
+                android:id="@+id/tv_party_size_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/party_size"
+                android:textAppearance="@style/TextAppearance.App.Secondary"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/time_grid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/party_size_selector"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/input_height"
+                android:background="@drawable/input_background_visible"
+                android:paddingStart="@dimen/spacing_medium"
+                android:paddingEnd="@dimen/spacing_medium"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                app:layout_constraintTop_toBottomOf="@id/tv_party_size_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <TextView
+                    android:id="@+id/tv_guests_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/number_of_guests"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_guest_count" />
+
+                <TextView
+                    android:id="@+id/tv_guest_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_dropdown" />
+
+                <TextView
+                    android:id="@+id/tv_dropdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▼"
+                    android:textSize="@dimen/text_size_caption"
+                    android:textColor="@color/text_hint"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Continue Button -->
+            <Button
+                android:id="@+id/btn_continue"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/continue"
+                android:background="@drawable/button_primary"
+                android:textColor="@color/text_on_primary"
+                android:textSize="@dimen/text_size_body"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="true"
+                android:elevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_xlarge"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@id/party_size_selector"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
