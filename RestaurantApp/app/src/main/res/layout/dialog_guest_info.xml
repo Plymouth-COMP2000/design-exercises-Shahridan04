@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_medium">
+
+    <EditText
+        android:id="@+id/et_guest_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_height"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:background="@drawable/input_background_visible"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:layout_marginBottom="@dimen/spacing_small" />
+
+    <EditText
+        android:id="@+id/et_guest_email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_height"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/input_background_visible"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:layout_marginBottom="@dimen/spacing_small" />
+
+    <EditText
+        android:id="@+id/et_guest_contact"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_height"
+        android:hint="Contact Number"
+        android:inputType="phone"
+        android:background="@drawable/input_background_visible"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:textAppearance="@style/TextAppearance.App.Body"
+        android:layout_marginBottom="@dimen/spacing_small" />
+
+    <EditText
+        android:id="@+id/et_special_requests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
+        android:hint="Special Requests (Optional)"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:background="@drawable/input_background_visible"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_medium"
+        android:textAppearance="@style/TextAppearance.App.Body" />
+
+</LinearLayout>
+

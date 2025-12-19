@@ -139,13 +139,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintWidth_percent="0.95" />
 
-            <!-- Recent Activity Title -->
+            <!-- Recent Activity Title - Hidden (mock data removed) -->
             <TextView
                 android:id="@+id/tv_recent_activity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/recent_activity"
                 android:textAppearance="@style/TextAppearance.App.Headline"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/spacing_large"
                 app:layout_constraintTop_toBottomOf="@id/btn_view_reservations"
                 app:layout_constraintStart_toStartOf="parent"

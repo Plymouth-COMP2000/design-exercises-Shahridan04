@@ -313,7 +313,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation Bar (Guest Style) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_nav"
         android:layout_width="0dp"
@@ -360,14 +360,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/nav_menu"
-            app:layout_constraintEnd_toStartOf="@id/nav_settings"
+            app:layout_constraintEnd_toStartOf="@id/nav_profile"
             app:layout_constraintWidth_percent="0.25" />
 
         <TextView
-            android:id="@+id/nav_settings"
+            android:id="@+id/nav_profile"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:text="@string/settings"
+            android:text="Profile"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.App.Secondary"
             android:textColor="@color/primary"

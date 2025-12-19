@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/content_background_pattern">
@@ -17,30 +18,30 @@
 
     <TextView
         android:id="@+id/btn_back"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="51dp"
+        android:background="@android:color/transparent"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/spacing_medium"
         android:text="← Back"
         android:textAppearance="@style/TextAppearance.App.Body"
         android:textColor="@color/text_on_primary"
-        android:background="@android:color/transparent"
-        android:padding="@dimen/spacing_medium"
-        android:gravity="start|center_vertical"
-        app:layout_constraintTop_toTopOf="@id/header_background"
         app:layout_constraintBottom_toBottomOf="@id/header_background"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_background" />
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="33dp"
+        android:gravity="center"
         android:text="@string/book_a_table"
         android:textAppearance="@style/TextAppearance.App.Headline"
         android:textColor="@color/text_on_primary"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="@id/header_background"
         app:layout_constraintBottom_toBottomOf="@id/header_background"
+        app:layout_constraintEnd_toStartOf="@id/spacer_right"
         app:layout_constraintStart_toEndOf="@id/btn_back"
-        app:layout_constraintEnd_toStartOf="@id/spacer_right" />
+        app:layout_constraintTop_toTopOf="@id/header_background" />
 
     <View
         android:id="@+id/spacer_right"
@@ -65,7 +66,43 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_medium">
 
-            <!-- Progress Indicator -->
+            <!-- Progress Indicator with Bullet Points -->
+            <LinearLayout
+                android:id="@+id/progress_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <!-- Step 1 (Completed) -->
+                <View
+                    android:id="@+id/step1_indicator"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/step_indicator_completed"
+                    android:layout_marginEnd="@dimen/spacing_tiny" />
+
+                <!-- Step 2 (Current) -->
+                <View
+                    android:id="@+id/step2_indicator"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/step_indicator_current"
+                    android:layout_marginEnd="@dimen/spacing_tiny" />
+
+                <!-- Step 3 (Future) -->
+                <View
+                    android:id="@+id/step3_indicator"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/step_indicator_future" />
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/tv_progress"
                 android:layout_width="0dp"
@@ -73,8 +110,8 @@
                 android:text="@string/step_2_of_3"
                 android:textAppearance="@style/TextAppearance.App.Secondary"
                 android:gravity="center"
-                android:layout_marginTop="@dimen/spacing_medium"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/progress_container"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintWidth_percent="0.95" />
@@ -114,12 +151,14 @@
                         android:id="@+id/tv_date_value"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Nov 10, 2025"
                         android:textAppearance="@style/TextAppearance.App.Body"
                         android:textStyle="bold"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_check"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tv_check" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_check"
@@ -150,113 +189,119 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/time_grid"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="359dp"
+                android:layout_height="102dp"
                 android:layout_marginTop="@dimen/spacing_small"
-                app:layout_constraintTop_toBottomOf="@id/tv_select_time_label"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_select_time_label"
                 app:layout_constraintWidth_percent="0.95">
 
                 <Button
                     android:id="@+id/btn_time_5pm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/button_height_small"
-                    android:text="5:00 PM"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
                     android:background="@drawable/input_background"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_size_secondary"
                     android:fontFamily="sans-serif-medium"
+                    android:text="5:00 PM"
                     android:textAllCaps="false"
-                    android:layout_marginEnd="@dimen/spacing_tiny"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:textStyle="normal"
                     app:layout_constraintEnd_toStartOf="@id/btn_time_530pm"
-                    app:layout_constraintWidth_percent="0.32" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.31" />
 
                 <Button
                     android:id="@+id/btn_time_530pm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/button_height_small"
-                    android:text="5:30 PM"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
                     android:background="@drawable/input_background"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_size_secondary"
                     android:fontFamily="sans-serif-medium"
+                    android:text="5:30 PM"
                     android:textAllCaps="false"
-                    android:layout_marginEnd="@dimen/spacing_tiny"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btn_time_5pm"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:textStyle="normal"
                     app:layout_constraintEnd_toStartOf="@id/btn_time_6pm"
-                    app:layout_constraintWidth_percent="0.32" />
+                    app:layout_constraintStart_toEndOf="@id/btn_time_5pm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.31" />
 
                 <Button
                     android:id="@+id/btn_time_6pm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/button_height_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:background="@drawable/input_background"
+                    android:fontFamily="sans-serif-medium"
                     android:text="6:00 PM"
-                    android:background="@drawable/input_background"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_size_secondary"
-                    android:fontFamily="sans-serif-medium"
                     android:textAllCaps="false"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btn_time_530pm"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="0.32" />
-
-                <Button
-                    android:id="@+id/btn_time_630pm"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height_small"
-                    android:text="6:30 PM"
-                    android:background="@drawable/button_accent"
-                    android:textColor="@color/text_on_primary"
-                    android:textSize="@dimen/text_size_secondary"
-                    android:fontFamily="sans-serif-medium"
-                    android:textAllCaps="false"
-                    android:layout_marginEnd="@dimen/spacing_tiny"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:layout_constraintTop_toBottomOf="@id/btn_time_5pm"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btn_time_7pm"
-                    app:layout_constraintWidth_percent="0.32" />
-
-                <Button
-                    android:id="@+id/btn_time_7pm"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height_small"
-                    android:text="7:00 PM"
-                    android:background="@drawable/input_background"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_size_secondary"
-                    android:fontFamily="sans-serif-medium"
-                    android:textAllCaps="false"
-                    android:layout_marginEnd="@dimen/spacing_tiny"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:layout_constraintTop_toBottomOf="@id/btn_time_530pm"
-                    app:layout_constraintStart_toEndOf="@id/btn_time_630pm"
-                    app:layout_constraintEnd_toStartOf="@id/btn_time_730pm"
-                    app:layout_constraintWidth_percent="0.32" />
+                    app:layout_constraintStart_toEndOf="@id/btn_time_530pm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.31" />
 
                 <Button
                     android:id="@+id/btn_time_730pm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/button_height_small"
-                    android:text="7:30 PM"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/input_background"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_size_secondary"
                     android:fontFamily="sans-serif-medium"
+                    android:text="7:30 PM"
                     android:textAllCaps="false"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:layout_constraintTop_toBottomOf="@id/btn_time_6pm"
-                    app:layout_constraintStart_toEndOf="@id/btn_time_7pm"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="0.32" />
+                    app:layout_constraintStart_toEndOf="@id/btn_time_7pm"
+                    app:layout_constraintTop_toBottomOf="@id/btn_time_6pm"
+                    app:layout_constraintWidth_percent="0.31" />
+
+                <Button
+                    android:id="@+id/btn_time_7pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:background="@drawable/input_background"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="7:00 PM"
+                    android:textAllCaps="false"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toStartOf="@id/btn_time_730pm"
+                    app:layout_constraintStart_toEndOf="@id/btn_time_630pm"
+                    app:layout_constraintTop_toBottomOf="@id/btn_time_530pm"
+                    app:layout_constraintWidth_percent="0.31" />
+
+                <Button
+                    android:id="@+id/btn_time_630pm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_small"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:background="@drawable/button_time_selected"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="6:30 PM ✓"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_secondary"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/btn_time_7pm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_time_5pm"
+                    app:layout_constraintWidth_percent="0.31" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Party Size Section -->

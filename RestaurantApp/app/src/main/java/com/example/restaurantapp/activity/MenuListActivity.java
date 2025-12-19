@@ -36,7 +36,7 @@ public class MenuListActivity extends AppCompatActivity {
     private AppDatabase database;
     private ExecutorService executorService;
     
-    private Button btnFilterAll, btnFilterStarters, btnFilterMains, btnFilterDesserts, btnFilterDrinks;
+    private Button btnFilterAll, btnFilterStarters, btnFilterMains, btnFilterDesserts;
     private String selectedCategory = "All";
     private List<MenuItem> allMenuItems = new ArrayList<>();
     
@@ -79,7 +79,7 @@ public class MenuListActivity extends AppCompatActivity {
         btnFilterStarters = findViewById(R.id.btn_filter_starters);
         btnFilterMains = findViewById(R.id.btn_filter_mains);
         btnFilterDesserts = findViewById(R.id.btn_filter_desserts);
-        btnFilterDrinks = findViewById(R.id.btn_filter_drinks);
+        // Note: Drinks filter button doesn't exist in layout
         
         // Bottom navigation
         navHome = findViewById(R.id.nav_home);
@@ -112,46 +112,54 @@ public class MenuListActivity extends AppCompatActivity {
     }
     
     private void setupClickListeners() {
-        btnBack.setOnClickListener(v -> finish());
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> finish());
+        }
         
-        btnAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(MenuListActivity.this, AddItemActivity.class);
-            startActivity(intent);
-        });
+        if (btnAdd != null) {
+            btnAdd.setOnClickListener(v -> {
+                Intent intent = new Intent(MenuListActivity.this, AddItemActivity.class);
+                startActivity(intent);
+            });
+        }
         
-        // Category filters
-        btnFilterAll.setOnClickListener(v -> {
-            selectedCategory = "All";
-            updateFilterButtons();
-            filterAndSearch();
-        });
+        // Category filters - with null checks
+        if (btnFilterAll != null) {
+            btnFilterAll.setOnClickListener(v -> {
+                selectedCategory = "All";
+                updateFilterButtons();
+                filterAndSearch();
+            });
+        }
         
-        btnFilterStarters.setOnClickListener(v -> {
-            selectedCategory = "Starters";
-            updateFilterButtons();
-            filterAndSearch();
-        });
+        if (btnFilterStarters != null) {
+            btnFilterStarters.setOnClickListener(v -> {
+                selectedCategory = "Starters";
+                updateFilterButtons();
+                filterAndSearch();
+            });
+        }
         
-        btnFilterMains.setOnClickListener(v -> {
-            selectedCategory = "Mains";
-            updateFilterButtons();
-            filterAndSearch();
-        });
+        if (btnFilterMains != null) {
+            btnFilterMains.setOnClickListener(v -> {
+                selectedCategory = "Mains";
+                updateFilterButtons();
+                filterAndSearch();
+            });
+        }
         
-        btnFilterDesserts.setOnClickListener(v -> {
-            selectedCategory = "Desserts";
-            updateFilterButtons();
-            filterAndSearch();
-        });
-        
-        btnFilterDrinks.setOnClickListener(v -> {
-            selectedCategory = "Drinks";
-            updateFilterButtons();
-            filterAndSearch();
-        });
+        if (btnFilterDesserts != null) {
+            btnFilterDesserts.setOnClickListener(v -> {
+                selectedCategory = "Desserts";
+                updateFilterButtons();
+                filterAndSearch();
+            });
+        }
     }
     
     private void setupSearch() {
+        if (etSearch == null) return;
+        
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -167,21 +175,26 @@ public class MenuListActivity extends AppCompatActivity {
     }
     
     private void updateFilterButtons() {
-        // Reset all buttons
-        btnFilterAll.setBackgroundResource(R.drawable.input_background);
-        btnFilterAll.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        // Reset all buttons - with null checks
+        if (btnFilterAll != null) {
+            btnFilterAll.setBackgroundResource(R.drawable.input_background);
+            btnFilterAll.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        }
         
-        btnFilterStarters.setBackgroundResource(R.drawable.input_background);
-        btnFilterStarters.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        if (btnFilterStarters != null) {
+            btnFilterStarters.setBackgroundResource(R.drawable.input_background);
+            btnFilterStarters.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        }
         
-        btnFilterMains.setBackgroundResource(R.drawable.input_background);
-        btnFilterMains.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        if (btnFilterMains != null) {
+            btnFilterMains.setBackgroundResource(R.drawable.input_background);
+            btnFilterMains.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        }
         
-        btnFilterDesserts.setBackgroundResource(R.drawable.input_background);
-        btnFilterDesserts.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
-        
-        btnFilterDrinks.setBackgroundResource(R.drawable.input_background);
-        btnFilterDrinks.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        if (btnFilterDesserts != null) {
+            btnFilterDesserts.setBackgroundResource(R.drawable.input_background);
+            btnFilterDesserts.setTextColor(ContextCompat.getColor(this, R.color.text_secondary));
+        }
         
         // Highlight selected
         Button selected = null;
@@ -190,7 +203,6 @@ public class MenuListActivity extends AppCompatActivity {
             case "Starters": selected = btnFilterStarters; break;
             case "Mains": selected = btnFilterMains; break;
             case "Desserts": selected = btnFilterDesserts; break;
-            case "Drinks": selected = btnFilterDrinks; break;
         }
         
         if (selected != null) {
@@ -217,7 +229,10 @@ public class MenuListActivity extends AppCompatActivity {
     }
     
     private void filterAndSearch() {
-        String searchQuery = etSearch.getText().toString().toLowerCase().trim();
+        String searchQuery = "";
+        if (etSearch != null) {
+            searchQuery = etSearch.getText().toString().toLowerCase().trim();
+        }
         List<MenuItem> filtered = new ArrayList<>();
         
         for (MenuItem item : allMenuItems) {

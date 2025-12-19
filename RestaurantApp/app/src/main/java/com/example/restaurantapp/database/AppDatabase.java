@@ -7,14 +7,17 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.restaurantapp.dao.MenuDao;
+import com.example.restaurantapp.dao.ReservationDao;
 import com.example.restaurantapp.model.MenuItem;
+import com.example.restaurantapp.model.Reservation;
 
-@Database(entities = {MenuItem.class}, version = 1, exportSchema = false)
+@Database(entities = {MenuItem.class, Reservation.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     
     private static AppDatabase INSTANCE;
     
     public abstract MenuDao menuDao();
+    public abstract ReservationDao reservationDao();
     
     public static synchronized AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
@@ -22,7 +25,9 @@ public abstract class AppDatabase extends RoomDatabase {
                     context.getApplicationContext(),
                     AppDatabase.class,
                     "restaurant_database"
-            ).build();
+            )
+            .fallbackToDestructiveMigration() // For development - allows version changes
+            .build();
         }
         return INSTANCE;
     }

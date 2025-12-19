@@ -127,6 +127,7 @@
     <string name="pending">PENDING</string>
     <string name="tap_for_details">Tap for details →</string>
     <string name="no_more_upcoming">No more upcoming reservations</string>
+    <string name="no_reservations">No reservations found</string>
     <string name="tomorrow">Tomorrow</string>
     <string name="next_week">Next Week</string>
 </resources>

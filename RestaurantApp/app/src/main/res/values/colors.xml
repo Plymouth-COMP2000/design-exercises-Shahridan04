@@ -32,6 +32,7 @@
     <color name="error_light">#EF5350</color>
     <color name="success">#4CAF50</color>
     <color name="warning">#FF9800</color>
+    <color name="warning_light">#FFB74D</color>
     <color name="info">#2196F3</color>
     
     <!-- Background Colors -->

@@ -6,29 +6,30 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.restaurantapp.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class GuestSettingsActivity extends AppCompatActivity {
     
+    private TextView btnBack;
     private Button btnChangePassword, btnLogout;
-    private TextView navHome, navMenu, navBookings, navSettings;
     private SwitchCompat switchReservationUpdates, switchMenuUpdates;
+    private TextView navHome, navMenu, navBookings, navProfile;
     private android.widget.EditText etName, etEmail, etContact;
     private SharedPreferences prefs;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_guest_settings);
         
         prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
         
         // Initialize views
+        btnBack = findViewById(R.id.btn_back);
         btnChangePassword = findViewById(R.id.btn_change_password);
         btnLogout = findViewById(R.id.btn_logout);
         switchReservationUpdates = findViewById(R.id.switch_reservation_updates);
@@ -39,9 +40,9 @@ public class SettingsActivity extends AppCompatActivity {
         navHome = findViewById(R.id.nav_home);
         navMenu = findViewById(R.id.nav_menu);
         navBookings = findViewById(R.id.nav_bookings);
-        navSettings = findViewById(R.id.nav_settings);
+        navProfile = findViewById(R.id.nav_profile);
         
-        // Load user info and saved preferences
+        // Load saved preferences and user info
         loadUserInfo();
         loadPreferences();
         
@@ -59,13 +60,13 @@ public class SettingsActivity extends AppCompatActivity {
         String email = prefs.getString("email", "");
         String contact = prefs.getString("contact", "");
         
-        if (etName != null && !firstName.isEmpty() && !lastName.isEmpty()) {
+        if (!firstName.isEmpty() && !lastName.isEmpty()) {
             etName.setText(firstName + " " + lastName);
         }
-        if (etEmail != null && !email.isEmpty()) {
+        if (!email.isEmpty()) {
             etEmail.setText(email);
         }
-        if (etContact != null && !contact.isEmpty()) {
+        if (!contact.isEmpty()) {
             etContact.setText(contact);
         }
     }
@@ -81,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Save listener for reservation updates (main notification toggle)
         switchReservationUpdates.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefs.edit().putBoolean("notifications_enabled", isChecked).apply();
-            Toast.makeText(this, isChecked ? "Notifications enabled" : "Notifications disabled", Toast.LENGTH_SHORT).show();
+            android.widget.Toast.makeText(this, isChecked ? "Notifications enabled" : "Notifications disabled", android.widget.Toast.LENGTH_SHORT).show();
         });
         
         // Save listener for menu updates
@@ -91,45 +92,61 @@ public class SettingsActivity extends AppCompatActivity {
     }
     
     private void setupClickListeners() {
-        btnChangePassword.setOnClickListener(v -> {
-            Toast.makeText(this, "Change password functionality coming soon", Toast.LENGTH_SHORT).show();
-        });
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> finish());
+        }
         
-        btnLogout.setOnClickListener(v -> {
-            // Clear preferences on logout
-            prefs.edit().clear().apply();
-            
-            // Navigate back to login
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        });
+        if (btnChangePassword != null) {
+            btnChangePassword.setOnClickListener(v -> {
+                android.widget.Toast.makeText(this, "Change password functionality coming soon", android.widget.Toast.LENGTH_SHORT).show();
+            });
+        }
+        
+        if (btnLogout != null) {
+            btnLogout.setOnClickListener(v -> {
+                // Clear preferences on logout
+                prefs.edit().clear().apply();
+                
+                // Navigate back to login
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            });
+        }
     }
     
     private void setupBottomNavigation() {
-        navHome.setOnClickListener(v -> {
-            Intent intent = new Intent(this, StaffDashboardActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        });
+        if (navHome != null) {
+            navHome.setOnClickListener(v -> {
+                Intent intent = new Intent(this, GuestHomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            });
+        }
         
-        navMenu.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MenuListActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        if (navMenu != null) {
+            navMenu.setOnClickListener(v -> {
+                Intent intent = new Intent(this, GuestMenuActivity.class);
+                startActivity(intent);
+                finish();
+            });
+        }
         
-        navBookings.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ReservationsActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        if (navBookings != null) {
+            navBookings.setOnClickListener(v -> {
+                Intent intent = new Intent(this, MyReservationsActivity.class);
+                startActivity(intent);
+                finish();
+            });
+        }
         
-        navSettings.setOnClickListener(v -> {
-            // Already on settings
-        });
+        if (navProfile != null) {
+            navProfile.setOnClickListener(v -> {
+                // Already on profile/settings
+            });
+        }
     }
 }
 

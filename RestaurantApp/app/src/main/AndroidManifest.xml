@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -49,10 +50,22 @@
             android:name=".activity.ReservationsActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.ReservationDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MyReservationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BookTableActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ConfirmBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GuestSettingsActivity"
             android:exported="false" />
     </application>
 

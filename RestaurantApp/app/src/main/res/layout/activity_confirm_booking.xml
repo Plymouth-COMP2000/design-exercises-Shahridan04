@@ -258,6 +258,7 @@
                 app:layout_constraintWidth_percent="0.95">
 
                 <TextView
+                    android:id="@+id/tv_special_requests_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Window seat preferred"

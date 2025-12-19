@@ -133,6 +133,17 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     
                     if (loginSuccess && loggedInUser != null) {
+                        // Save user info to SharedPreferences
+                        android.content.SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+                        prefs.edit()
+                                .putString("username", loggedInUser.getUsername())
+                                .putString("usertype", loggedInUser.getUsertype())
+                                .putString("firstname", loggedInUser.getFirstname())
+                                .putString("lastname", loggedInUser.getLastname())
+                                .putString("email", loggedInUser.getEmail())
+                                .putString("contact", loggedInUser.getContact())
+                                .apply();
+                        
                         // Check usertype and navigate accordingly
                         String usertype = loggedInUser.getUsertype().toLowerCase();
                         

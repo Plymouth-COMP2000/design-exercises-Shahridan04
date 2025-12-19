@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/content_background_pattern">
@@ -84,6 +85,7 @@
         android:scrollbars="none"
         android:paddingStart="@dimen/spacing_medium"
         android:paddingEnd="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
         app:layout_constraintTop_toBottomOf="@id/et_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -97,68 +99,68 @@
                 android:id="@+id/btn_filter_all"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/button_height_small"
-                android:text="@string/all"
+                android:layout_marginEnd="@dimen/spacing_tiny"
                 android:background="@drawable/button_primary"
-                android:textColor="@color/text_on_primary"
-                android:textSize="@dimen/text_size_secondary"
                 android:fontFamily="sans-serif-medium"
-                android:textAllCaps="false"
                 android:minWidth="80dp"
-                android:layout_marginEnd="@dimen/spacing_tiny" />
+                android:text="@string/all"
+                android:textAllCaps="false"
+                android:textColor="@color/text_on_primary"
+                android:textSize="@dimen/text_size_secondary" />
 
             <Button
                 android:id="@+id/btn_filter_starters"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/button_height_small"
-                android:text="@string/starters"
+                android:layout_marginEnd="@dimen/spacing_tiny"
                 android:background="@drawable/input_background"
-                android:textColor="@color/text_secondary"
-                android:textSize="@dimen/text_size_secondary"
                 android:fontFamily="sans-serif-medium"
-                android:textAllCaps="false"
                 android:minWidth="80dp"
-                android:layout_marginEnd="@dimen/spacing_tiny" />
+                android:text="@string/starters"
+                android:textAllCaps="false"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_secondary" />
 
             <Button
                 android:id="@+id/btn_filter_mains"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/button_height_small"
-                android:text="@string/mains"
+                android:layout_marginEnd="@dimen/spacing_tiny"
                 android:background="@drawable/input_background"
-                android:textColor="@color/text_secondary"
-                android:textSize="@dimen/text_size_secondary"
                 android:fontFamily="sans-serif-medium"
-                android:textAllCaps="false"
                 android:minWidth="80dp"
-                android:layout_marginEnd="@dimen/spacing_tiny" />
+                android:text="@string/mains"
+                android:textAllCaps="false"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_secondary" />
 
             <Button
                 android:id="@+id/btn_filter_desserts"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/button_height_small"
-                android:text="@string/desserts"
                 android:background="@drawable/input_background"
-                android:textColor="@color/text_secondary"
-                android:textSize="@dimen/text_size_secondary"
                 android:fontFamily="sans-serif-medium"
+                android:minWidth="80dp"
+                android:text="@string/desserts"
                 android:textAllCaps="false"
-                android:minWidth="80dp" />
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_secondary" />
         </LinearLayout>
     </HorizontalScrollView>
 
     <!-- Menu Items RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_menu_items"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="407dp"
+        android:layout_height="417dp"
+        android:layout_marginTop="@dimen/spacing_medium"
         android:clipToPadding="false"
         android:paddingTop="@dimen/spacing_medium"
         android:paddingBottom="@dimen/spacing_medium"
-        android:layout_marginTop="@dimen/spacing_medium"
-        app:layout_constraintTop_toBottomOf="@id/filter_container"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/filter_container" />
 
     <!-- Bottom Navigation Bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
