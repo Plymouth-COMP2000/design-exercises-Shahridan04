@@ -1,0 +1,133 @@
+<resources>
+    <string name="app_name">RestaurantApp</string>
+    
+    <!-- Login Screen -->
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="staff">Staff</string>
+    <string name="guest">Guest</string>
+    <string name="login_button">Login Button</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    
+    <!-- Staff Dashboard -->
+    <string name="staff_dashboard">Staff Dashboard</string>
+    <string name="reservations_today">Reservations Today</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="manage_menu">Manage Menu</string>
+    <string name="view_reservations">View Reservations</string>
+    <string name="recent_activity">Recent Activity</string>
+    
+    <!-- Menu List -->
+    <string name="menu_list">Menu List</string>
+    <string name="back">Back</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="search_hint">Search…</string>
+    <string name="all">All</string>
+    <string name="starters">Starters</string>
+    <string name="mains">Mains</string>
+    <string name="desserts">Desserts</string>
+    <string name="edit">Edit</string>
+    <string name="del">Delete</string>
+    
+    <!-- Add Item -->
+    <string name="add_item">Add Item</string>
+    <string name="tap_to_upload">Tap to upload image</string>
+    <string name="item_name">Item Name *</string>
+    <string name="price_rm">Price (RM) *</string>
+    <string name="category">Category *</string>
+    <string name="select">Select</string>
+    <string name="description">Description</string>
+    <string name="save_item">Save Item</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Reservations -->
+    <string name="reservations">Reservations</string>
+    <string name="today_date">Today - Nov 7, 2025</string>
+    <string name="search_by_name">Search by name…</string>
+    <string name="todays_reservations">Today\'s Reservations (%d)</string>
+    <string name="view_details">View Details</string>
+    <string name="cancel_booking">Cancel</string>
+    
+    <!-- Reservation Details -->
+    <string name="details">Details</string>
+    <string name="date_time">Date &amp; Time</string>
+    <string name="party_size">Party Size</string>
+    <string name="table_assigned">Table Assigned</string>
+    <string name="contact">Contact</string>
+    <string name="special_requests">Special Requests</string>
+    <string name="cancel_reservation">CANCEL RESERVATION</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="home">Home</string>
+    <string name="menu">Menu</string>
+    <string name="bookings">Bookings</string>
+    <string name="settings">Settings</string>
+    
+    <!-- Settings Screen -->
+    <string name="account_info">Account Info</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="contact_number">Contact</string>
+    <string name="notifications">Notifications</string>
+    <string name="reservation_updates">Reservation Updates</string>
+    <string name="menu_updates">Menu Updates</string>
+    <string name="change_password">Change Password</string>
+    <string name="logout">Logout</string>
+    
+    <!-- Guest Home -->
+    <string name="welcome">Welcome, %s!</string>
+    <string name="ready_to_dine">Ready to Dine?</string>
+    <string name="make_reservation">MAKE RESERVATION</string>
+    <string name="upcoming_reservations">Upcoming Reservations</string>
+    <string name="featured_dishes">Featured Dishes</string>
+    <string name="view_full_menu">VIEW FULL MENU</string>
+    <string name="party_of">Party of %d</string>
+    
+    <!-- Guest Menu -->
+    <string name="our_menu">Our Menu</string>
+    <string name="browse_by_category">Browse by Category:</string>
+    <string name="drinks">Drinks</string>
+    <string name="fresh_romaine">Fresh romaine lettuce with parmesan</string>
+    <string name="classic_italian">Classic Italian pizza with fresh basil</string>
+    <string name="fresh_atlantic">Fresh Atlantic salmon with herbs</string>
+    
+    <!-- Item Details -->
+    <string name="item_details">Item Details</string>
+    <string name="dietary_information">Dietary Information</string>
+    <string name="contains_fish">Contains Fish</string>
+    <string name="gluten_free">Gluten Free</string>
+    <string name="low_carb">Low Carb</string>
+    
+    <!-- Book a Table -->
+    <string name="book_a_table">Book a Table</string>
+    <string name="date_selected">Date Selected</string>
+    <string name="select_time">Select Time</string>
+    <string name="number_of_guests">Number of guests</string>
+    <string name="btn_continue">CONTINUE</string>
+    <string name="step_2_of_3">Step 2 of 3: Select Time &amp; Party</string>
+    
+    <!-- Confirm Booking -->
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="booking_confirmed">Booking Confirmed!</string>
+    <string name="reservation_saved">Your reservation has been saved</string>
+    <string name="reservation_summary">Reservation Summary</string>
+    <string name="view_my_reservations">VIEW MY RESERVATIONS</string>
+    <string name="back_to_home">BACK TO HOME</string>
+    <string name="step_3_of_3">Step 3 of 3: Confirm</string>
+    
+    <!-- My Reservations -->
+    <string name="my_reservations">My Reservations</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
+    <string name="confirmed">CONFIRMED</string>
+    <string name="pending">PENDING</string>
+    <string name="tap_for_details">Tap for details →</string>
+    <string name="no_more_upcoming">No more upcoming reservations</string>
+    <string name="no_reservations">No reservations found</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="next_week">Next Week</string>
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient background - More vibrant -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="#EEF2FF"
+                android:centerColor="#F5F8FF"
+                android:endColor="#FAFCFF"
+                android:type="linear" />
+        </shape>
+    </item>
+    
+    <!-- Large Decorative Circle Top Right -->
+    <item
+        android:top="-120dp"
+        android:right="-120dp">
+        <shape android:shape="oval">
+            <solid android:color="#20667eea" />
+            <size
+                android:width="300dp"
+                android:height="300dp" />
+        </shape>
+    </item>
+    
+    <!-- Medium Circle Top Right Inner -->
+    <item
+        android:top="-60dp"
+        android:right="-60dp">
+        <shape android:shape="oval">
+            <solid android:color="#15667eea" />
+            <size
+                android:width="180dp"
+                android:height="180dp" />
+        </shape>
+    </item>
+    
+    <!-- Medium Circle Middle Left -->
+    <item
+        android:top="250dp"
+        android:left="-100dp">
+        <shape android:shape="oval">
+            <solid android:color="#184CAF50" />
+            <size
+                android:width="220dp"
+                android:height="220dp" />
+        </shape>
+    </item>
+    
+    <!-- Small Circle Middle Left -->
+    <item
+        android:top="300dp"
+        android:left="-40dp">
+        <shape android:shape="oval">
+            <solid android:color="#124CAF50" />
+            <size
+                android:width="120dp"
+                android:height="120dp" />
+        </shape>
+    </item>
+    
+    <!-- Large Circle Bottom Right -->
+    <item
+        android:bottom="-140dp"
+        android:right="-140dp">
+        <shape android:shape="oval">
+            <solid android:color="#18667eea" />
+            <size
+                android:width="320dp"
+                android:height="320dp" />
+        </shape>
+    </item>
+    
+    <!-- Medium Circle Bottom Left -->
+    <item
+        android:bottom="-80dp"
+        android:left="-80dp">
+        <shape android:shape="oval">
+            <solid android:color="#108c9ef5" />
+            <size
+                android:width="200dp"
+                android:height="200dp" />
+        </shape>
+    </item>
+    
+    <!-- Accent Circle Top Left -->
+    <item
+        android:top="100dp"
+        android:left="-30dp">
+        <shape android:shape="oval">
+            <solid android:color="#0A667eea" />
+            <size
+                android:width="100dp"
+                android:height="100dp" />
+        </shape>
+    </item>
+    
+    <!-- Accent Circle Middle Right -->
+    <item
+        android:top="400dp"
+        android:right="-40dp">
+        <shape android:shape="oval">
+            <solid android:color="#0D4CAF50" />
+            <size
+                android:width="130dp"
+                android:height="130dp" />
+        </shape>
+    </item>
+</layer-list>
+

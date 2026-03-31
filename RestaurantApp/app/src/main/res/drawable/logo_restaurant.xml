@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Temporary placeholder - Replace this file with your actual logo image (logo_restaurant.png) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="140dp"
+    android:height="140dp"
+    android:viewportWidth="140"
+    android:viewportHeight="140">
+    
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#F5F5F5"
+        android:pathData="M70,70m-65,0a65,65 0,1 1,130 0a65,65 0,1 1,-130 0" />
+    
+    <!-- Plate -->
+    <path
+        android:strokeColor="#667eea"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:pathData="M40,70 Q40,55 55,55 L85,55 Q100,55 100,70" />
+    
+    <!-- Fork (Left) -->
+    <path
+        android:strokeColor="#667eea"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M55,70 L55,90
+                         M50,70 L50,85
+                         M60,70 L60,85" />
+    
+    <!-- Knife (Right) -->
+    <path
+        android:strokeColor="#667eea"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M85,70 L85,90
+                         M82,70 L88,70" />
+    
+    <!-- Restaurant Text -->
+    <path
+        android:fillColor="#667eea"
+        android:pathData="M45,105 Q45,102 47,102 L93,102 Q95,102 95,105 L95,108 Q95,110 93,110 L47,110 Q45,110 45,108 Z" />
+</vector>
+

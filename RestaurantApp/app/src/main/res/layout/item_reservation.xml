@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_medium"
+    android:layout_marginEnd="@dimen/spacing_medium"
+    android:layout_marginTop="@dimen/spacing_small"
+    android:layout_marginBottom="@dimen/spacing_small"
+    app:cardCornerRadius="@dimen/radius_large"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <TextView
+            android:id="@+id/tv_res_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Guest Name"
+            android:textAppearance="@style/TextAppearance.App.Body"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_res_time" />
+
+        <TextView
+            android:id="@+id/tv_res_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7:30 PM"
+            android:textAppearance="@style/TextAppearance.App.Body"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_res_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Party of 4 • Table 12"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            android:layout_marginTop="@dimen/spacing_micro"
+            app:layout_constraintTop_toBottomOf="@id/tv_res_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_res_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmed"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            android:textColor="@color/accent"
+            android:layout_marginTop="@dimen/spacing_micro"
+            app:layout_constraintTop_toBottomOf="@id/tv_res_details"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_small"
+            android:text="@string/view_details"
+            android:background="@drawable/button_accent"
+            android:textColor="@color/text_on_primary"
+            android:textSize="@dimen/text_size_secondary"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_tiny"
+            app:layout_constraintTop_toBottomOf="@id/tv_res_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_cancel"
+            app:layout_constraintWidth_percent="0.48" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_small"
+            android:text="@string/cancel_booking"
+            android:background="@drawable/button_error"
+            android:textColor="@color/text_on_primary"
+            android:textSize="@dimen/text_size_secondary"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintTop_toBottomOf="@id/tv_res_status"
+            app:layout_constraintStart_toEndOf="@id/btn_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.48" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/content_background_pattern">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium">
+
+            <!-- Welcome Title -->
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Welcome, John!"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/primary"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <!-- Ready to Dine Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_ready_to_dine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/primary"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_xlarge">
+
+                    <TextView
+                        android:id="@+id/tv_ready_to_dine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ready_to_dine"
+                        android:textAppearance="@style/TextAppearance.App.Headline"
+                        android:textColor="@color/text_on_primary"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_make_reservation"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/button_height"
+                        android:text="@string/make_reservation"
+                        android:background="@drawable/button_accent"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/text_size_body"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAllCaps="true"
+                        android:elevation="@dimen/card_elevation"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ready_to_dine"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintWidth_percent="0.9" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Upcoming Reservations Section -->
+            <TextView
+                android:id="@+id/tv_upcoming_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/upcoming_reservations"
+                android:textAppearance="@style/TextAppearance.App.Headline"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/card_ready_to_dine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <!-- Upcoming Reservation Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_upcoming"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_large"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_upcoming_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tv_date_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tomorrow"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_party_size" />
+
+                    <TextView
+                        android:id="@+id/tv_date_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="November 8, 2025"
+                        android:textAppearance="@style/TextAppearance.App.Secondary"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        app:layout_constraintTop_toBottomOf="@id/tv_date_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_party_size" />
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="7:30 PM"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        app:layout_constraintTop_toBottomOf="@id/tv_date_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_party_size" />
+
+                    <TextView
+                        android:id="@+id/tv_party_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Party of 2"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_secondary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Featured Dishes Section -->
+            <TextView
+                android:id="@+id/tv_featured_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/featured_dishes"
+                android:textAppearance="@style/TextAppearance.App.Headline"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/card_upcoming"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+            <!-- Featured Dishes Row -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/featured_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_featured_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95">
+
+                <!-- Pasta Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_pasta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/radius_large"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/card_steak"
+                    app:layout_constraintWidth_percent="0.48">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_small">
+
+                        <FrameLayout
+                            android:id="@+id/img_pasta"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:background="@drawable/image_placeholder"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🍝"
+                                android:textSize="40sp"
+                                android:layout_gravity="center" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tv_pasta_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Pasta"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/spacing_tiny"
+                            app:layout_constraintTop_toBottomOf="@id/img_pasta"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_pasta_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="RM 28"
+                            android:textAppearance="@style/TextAppearance.App.Secondary"
+                            android:textColor="@color/primary"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/spacing_micro"
+                            app:layout_constraintTop_toBottomOf="@id/tv_pasta_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Steak Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_steak"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/radius_large"
+                    app:cardElevation="@dimen/card_elevation"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/card_pasta"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.48">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_small">
+
+                        <FrameLayout
+                            android:id="@+id/img_steak"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:background="@drawable/image_placeholder"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🥩"
+                                android:textSize="40sp"
+                                android:layout_gravity="center" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tv_steak_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Steak"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/spacing_tiny"
+                            app:layout_constraintTop_toBottomOf="@id/img_steak"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_steak_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="RM 65"
+                            android:textAppearance="@style/TextAppearance.App.Secondary"
+                            android:textColor="@color/primary"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/spacing_micro"
+                            app:layout_constraintTop_toBottomOf="@id/tv_steak_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- View Full Menu Button -->
+            <Button
+                android:id="@+id/btn_view_full_menu"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/view_full_menu"
+                android:background="@drawable/button_primary"
+                android:textColor="@color/text_on_primary"
+                android:textSize="@dimen/text_size_body"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="true"
+                android:elevation="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+                app:layout_constraintTop_toBottomOf="@id/featured_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@drawable/bottom_nav_background"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="@string/home"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:background="@drawable/nav_item_selected"
+            android:layout_margin="@dimen/spacing_tiny"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nav_menu"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_menu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/menu"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_home"
+            app:layout_constraintEnd_toStartOf="@id/nav_bookings"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_bookings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/bookings"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_menu"
+            app:layout_constraintEnd_toStartOf="@id/nav_profile"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Profile"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.App.Secondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_bookings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
